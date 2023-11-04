@@ -1,13 +1,13 @@
 //
-//  EssentialFeedAPITests.swift
-//  EssentialFeedAPITests
+//  EssentialFeedMacosAPIEndToEndTests.swift
+//  EssentialFeedMacosAPIEndToEndTests
 //
-//  Created by Temur on 26/09/2023.
+//  Created by Temur on 04/11/2023.
 //
 
 import XCTest
 import EssentialFeedMacos
-final class EssentialFeedAPITests: XCTestCase {
+final class EssentialFeedMacosAPIEndToEndTests: XCTestCase {
     
     func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
         
