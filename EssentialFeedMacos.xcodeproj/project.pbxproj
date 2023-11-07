@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B839943F2AF6C9A600979305 /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839943E2AF6C9A600979305 /* CacheFeedUseCaseTests.swift */; };
 		B83994422AFA524600979305 /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83994412AFA524600979305 /* LocalFeedLoader.swift */; };
+		B83994442AFA539500979305 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83994432AFA539500979305 /* FeedStore.swift */; };
 		B89CBA902AF55BBF003FA898 /* EssentialFeedMacos.docc in Sources */ = {isa = PBXBuildFile; fileRef = B89CBA8F2AF55BBF003FA898 /* EssentialFeedMacos.docc */; };
 		B89CBA962AF55BBF003FA898 /* EssentialFeedMacos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89CBA8B2AF55BBF003FA898 /* EssentialFeedMacos.framework */; };
 		B89CBA9B2AF55BBF003FA898 /* EssentialFeedMacosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89CBA9A2AF55BBF003FA898 /* EssentialFeedMacosTests.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		B839943E2AF6C9A600979305 /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		B83994412AFA524600979305 /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		B83994432AFA539500979305 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		B89CBA8B2AF55BBF003FA898 /* EssentialFeedMacos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeedMacos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89CBA8E2AF55BBF003FA898 /* EssentialFeedMacos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeedMacos.h; sourceTree = "<group>"; };
 		B89CBA8F2AF55BBF003FA898 /* EssentialFeedMacos.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = EssentialFeedMacos.docc; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				B83994412AFA524600979305 /* LocalFeedLoader.swift */,
+				B83994432AFA539500979305 /* FeedStore.swift */,
 			);
 			path = FeedCache;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B83994442AFA539500979305 /* FeedStore.swift in Sources */,
 				B89CBAB22AF55CD4003FA898 /* FeedLoader.swift in Sources */,
 				B89CBAA92AF55C50003FA898 /* HTTPClientResult.swift in Sources */,
 				B89CBAAD2AF55C77003FA898 /* URLSessionHTTPClient.swift in Sources */,
