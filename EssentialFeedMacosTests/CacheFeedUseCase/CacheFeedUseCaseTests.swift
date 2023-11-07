@@ -21,14 +21,21 @@ class LocalFeedLoader {
             if let cacheDeletionerror = error {
                 completion(cacheDeletionerror)
             }else {
-                self.store.insert(items, timestamp: self.currentDate()) { [weak self] error in
-                    guard self != nil else { return }
-                    completion(error)
-                }
+                cache(items, completion: completion)
             }
         }
     }
+    
+    private func cache(_ items: [FeedItem], completion: @escaping (Error?) -> ()) {
+        store.insert(items, timestamp: currentDate()) { [weak self] error in
+            guard self != nil else { return }
+            completion(error)
+        }
+    }
 }
+
+
+
 
 protocol FeedStore {
     typealias DeletionCompletion = (Error?) -> Void
@@ -62,7 +69,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         sut.save(items) { _ in }
         
         store.completeDeletion(with: deletionError)
-         
+        
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
     }
     
@@ -73,7 +80,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         sut.save(items) { _ in }
         
         store.completeDeletionSuccessfully()
-         
+        
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed, .insert(items, timestamp)])
     }
     
@@ -199,8 +206,8 @@ class CacheFeedUseCaseTests: XCTestCase {
     }
     
     private func uniqueItem() -> FeedItem {
-        return FeedItem(id: UUID(), 
-                        description: nil, 
+        return FeedItem(id: UUID(),
+                        description: nil,
                         location: nil,
                         imageURL: anyUrl() )
     }
