@@ -33,6 +33,7 @@
 		B8E308B12AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E308B02AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.swift */; };
 		B8E308B22AF65E840096291E /* EssentialFeedMacos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89CBA8B2AF55BBF003FA898 /* EssentialFeedMacos.framework */; };
 		B8E308B82AF65E980096291E /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89CBABB2AF55D89003FA898 /* XCTestCase+MemoryLeakTracking.swift */; };
+		B8F351282B02616F00908E6B /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F351272B02616F00908E6B /* FeedCachePolicy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		B89CBABB2AF55D89003FA898 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		B8E308AE2AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedMacosAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E308B02AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedMacosAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		B8F351272B02616F00908E6B /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				B83994412AFA524600979305 /* LocalFeedLoader.swift */,
 				B83994432AFA539500979305 /* FeedStore.swift */,
 				B83994472AFA730200979305 /* LocalFeedImage.swift */,
+				B8F351272B02616F00908E6B /* FeedCachePolicy.swift */,
 			);
 			path = FeedCache;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				B89CBAB02AF55CC9003FA898 /* FeedItem.swift in Sources */,
 				B89CBAA72AF55C2D003FA898 /* RemoteFeedLoader.swift in Sources */,
 				B83994462AFA711A00979305 /* RemoteFeedItem.swift in Sources */,
+				B8F351282B02616F00908E6B /* FeedCachePolicy.swift in Sources */,
 				B89CBA902AF55BBF003FA898 /* EssentialFeedMacos.docc in Sources */,
 				B83994422AFA524600979305 /* LocalFeedLoader.swift in Sources */,
 				B89CBAAB2AF55C5F003FA898 /* FeedItemMapper.swift in Sources */,
