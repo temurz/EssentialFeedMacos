@@ -22,7 +22,7 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_performsGetRequestWithURL() {
-        let url = anyURL()
+        let url = anyUrl()
         let exp = expectation(description: "Wait for the request")
         URLProtocolStub.observeRequests { request in
             XCTAssertEqual(request.url, url)
@@ -61,7 +61,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         let exp = expectation(description: "Wait for completion")
         
-        makeSUT().get(from: anyURL()) { result in
+        makeSUT().get(from: anyUrl()) { result in
             switch result {
             case let .success(receivedData, receivedResponse):
                 let emptyData = Data()
@@ -95,19 +95,14 @@ class URLSessionHTTPClientTests: XCTestCase {
         return sut
     }
     
-    private func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-    
     private func nonHTTPURLResponse() -> URLResponse {
-        return URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+        return URLResponse(url: anyUrl(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
     }
     
     private func anyHTTPURLResponse() -> HTTPURLResponse {
-        return HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
+        return HTTPURLResponse(url: anyUrl(), statusCode: 200, httpVersion: nil, headerFields: nil)!
     }
     
-    private func anyNSError() -> NSError { return NSError(domain: "any error", code: 0) }
     private func anyData() -> Data { return Data() }
     
     private func resultErrorFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> Error? {
@@ -140,7 +135,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         let exp = expectation(description: "Wait for completion")
         var receivedResult: HTTPClientResult!
-        sut.get(from: anyURL()) { result in
+        sut.get(from: anyUrl()) { result in
             receivedResult = result
             exp.fulfill()
         }
