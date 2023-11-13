@@ -7,8 +7,6 @@
 
 import EssentialFeedMacos
  
-
-
 func uniqueImage() -> FeedImage {
     return FeedImage(id: UUID(),
                     description: nil,
