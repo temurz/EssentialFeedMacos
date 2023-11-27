@@ -92,13 +92,6 @@ extension FeedStoreSpecs where Self: XCTestCase {
         expect(sut, toRetrieve: .empty)
     }
     
-    func assertThatDeleteHasNoSideEffectsOnDeletionError(_ sut: FeedStore, file: StaticString = #file, line: UInt = #line) {
-        
-        delete(in: sut)
-        
-        expect(sut, toRetrieve: .empty)
-    }
-    
     func assertThatSideEffectsRunSerially(on sut : FeedStore, file: StaticString = #file, line: UInt = #line) {
         let feed = uniqueImageFeed().local
         let timestamp = Date()
