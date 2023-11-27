@@ -39,15 +39,19 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreFailableSpecs {
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
+        let sut = makeSUT()
         
+        assertThatRetrieveHasNoSideEffectsOnEmptyCache(sut)
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
+        let sut = makeSUT()
         
+//        assertThatRetrieveDeliversFoundValuesOnNonEmptyCache(sut)
     }
     
     func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
-        
+        let sut = makeSUT()
     }
     
     func test_insert_deliversNoErrorOnEmptyCache() {
@@ -86,7 +90,8 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreFailableSpecs {
     //MARK: - Helpers
     
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> FeedStore {
-        let sut = CoreDataFeedStore()
+        let storeBundle = Bundle(for: CoreDataFeedStore.self)
+        let sut = try! CoreDataFeedStore(bundle: storeBundle)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
