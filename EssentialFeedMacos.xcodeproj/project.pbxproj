@@ -44,6 +44,7 @@
 		B8E308B22AF65E840096291E /* EssentialFeedMacos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89CBA8B2AF55BBF003FA898 /* EssentialFeedMacos.framework */; };
 		B8E308B82AF65E980096291E /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89CBABB2AF55D89003FA898 /* XCTestCase+MemoryLeakTracking.swift */; };
 		B8F351282B02616F00908E6B /* FeedCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F351272B02616F00908E6B /* FeedCachePolicy.swift */; };
+		B8FC48182B1D0C2A0092B308 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FC48172B1D0C2A0092B308 /* CoreDataHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		B8E308AE2AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedMacosAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E308B02AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedMacosAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		B8F351272B02616F00908E6B /* FeedCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCachePolicy.swift; sourceTree = "<group>"; };
+		B8FC48172B1D0C2A0092B308 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 			children = (
 				B8142C702B14E172008BB684 /* CoreDataFeedStore.swift */,
 				B8142C752B14E9C2008BB684 /* FeedStore.xcdatamodeld */,
+				B8FC48172B1D0C2A0092B308 /* CoreDataHelpers.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				B89CBAB22AF55CD4003FA898 /* FeedLoader.swift in Sources */,
 				B89CBAA92AF55C50003FA898 /* HTTPClientResult.swift in Sources */,
 				B89CBAAD2AF55C77003FA898 /* URLSessionHTTPClient.swift in Sources */,
+				B8FC48182B1D0C2A0092B308 /* CoreDataHelpers.swift in Sources */,
 				B89CBAB02AF55CC9003FA898 /* FeedItem.swift in Sources */,
 				B8142C712B14E172008BB684 /* CoreDataFeedStore.swift in Sources */,
 				B89CBAA72AF55C2D003FA898 /* RemoteFeedLoader.swift in Sources */,
