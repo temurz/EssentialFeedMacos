@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "B9C9B5B5-B8A8-4033-BBB2-1A6A27493E45",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EssentialFeedMacos.xcodeproj",
+        "identifier" : "B83AA9762B20AF340067DD59",
+        "name" : "EssentialFeedCacheIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
