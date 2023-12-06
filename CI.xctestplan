@@ -1,0 +1,46 @@
+{
+  "configurations" : [
+    {
+      "id" : "94F3C36B-3735-4443-8B89-8BD4C79EA4B5",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:EssentialFeedMacos.xcodeproj",
+          "identifier" : "B89CBA8A2AF55BBF003FA898",
+          "name" : "EssentialFeedMacos"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:EssentialFeedMacos.xcodeproj",
+        "identifier" : "B8E308AD2AF65E840096291E",
+        "name" : "EssentialFeedMacosAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentialFeedMacos.xcodeproj",
+        "identifier" : "B89CBA942AF55BBF003FA898",
+        "name" : "EssentialFeedMacosTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:EssentialFeedMacos.xcodeproj",
+        "identifier" : "B83AA9762B20AF340067DD59",
+        "name" : "EssentialFeedCacheIntegrationTests"
+      }
+    }
+  ],
+  "version" : 1
+}
