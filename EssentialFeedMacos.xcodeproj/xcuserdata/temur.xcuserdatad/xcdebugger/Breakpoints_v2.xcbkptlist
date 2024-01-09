@@ -3,4 +3,22 @@
    uuid = "1AD1CE0B-1820-45A8-BD55-9DB3A5C45C7F"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F067C86D-CA77-494A-91C6-68FA9EEB620A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EssentialFeedMacosTests/FeedAPI/URLSessionHTTPClientTests.swift"
+            startingColumnNumber = "25"
+            endingColumnNumber = "48"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "tearDown()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
