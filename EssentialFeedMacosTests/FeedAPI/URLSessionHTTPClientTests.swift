@@ -63,7 +63,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         makeSUT().get(from: anyUrl()) { result in
             switch result {
-            case let .success(receivedData, receivedResponse):
+            case let .success((receivedData, receivedResponse)):
                 let emptyData = Data()
                 XCTAssertEqual(receivedData, emptyData)
                 XCTAssertEqual(receivedResponse.statusCode, response.statusCode)
@@ -118,10 +118,10 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     private func resultSuccessFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> (data: Data, response: HTTPURLResponse)? {
-        let receivedResult: HTTPClientResult = resultFor(data: data, response: response, error: nil, file: file, line: line)
+        let receivedResult: HTTPClient.Result = resultFor(data: data, response: response, error: nil, file: file, line: line)
         
         switch receivedResult {
-        case let .success(data, response):
+        case let .success((data, response)):
             return (data, response)
         default:
             XCTFail("Expected success, got \(String(describing: receivedResult)) instead!", file: file, line: line)
@@ -129,12 +129,12 @@ class URLSessionHTTPClientTests: XCTestCase {
         }
     }
     
-    private func resultFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> HTTPClientResult {
+    private func resultFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> HTTPClient.Result {
         URLProtocolStub.stub(data: data, response: response , error: error)
         let sut = makeSUT(file: file, line: line)
         
         let exp = expectation(description: "Wait for completion")
-        var receivedResult: HTTPClientResult!
+        var receivedResult: HTTPClient.Result!
         sut.get(from: anyUrl()) { result in
             receivedResult = result
             exp.fulfill()
