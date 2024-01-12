@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol FeedLoader {
-    typealias LoadFeedResult = Swift.Result<[FeedImage], Error>
-    func load(completion: @escaping (LoadFeedResult) -> Void)
+    typealias Result = Swift.Result<[FeedImage], Error>
+    func load(completion: @escaping (Result) -> Void)
 }
