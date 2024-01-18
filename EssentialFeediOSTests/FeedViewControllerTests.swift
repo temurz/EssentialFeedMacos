@@ -126,6 +126,28 @@ final class FeedViewControllerTests: XCTestCase {
         XCTAssertEqual(view1?.isShowingImageLoadingIndicator, false)
     }
     
+    func test_feedImageView_rendersImageLoadedFromURL() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [makeImage(), makeImage()])
+        
+        let view0 = sut.simulateFeedImageViewVisible(at: 0)
+        let view1 = sut.simulateFeedImageViewVisible(at: 1)
+        XCTAssertEqual(view0?.renderedImage, .none)
+        XCTAssertEqual(view1?.renderedImage, .none)
+        
+        let imageData0 = UIImage.make(withColor: .red).pngData()!
+        loader.completeImageLoading(with: imageData0, at: 0)
+        XCTAssertEqual(view0?.renderedImage, imageData0)
+        XCTAssertEqual(view1?.renderedImage, .none)
+        
+        let imageData1 = UIImage.make(withColor: .blue).pngData()!
+        loader.completeImageLoading(with: imageData1, at: 1)
+        XCTAssertEqual(view0?.renderedImage, imageData0)
+        XCTAssertEqual(view1?.renderedImage, imageData1)
+    }
+    
     //MARK: Helpers
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
@@ -295,6 +317,10 @@ private extension FeedImageCell {
     var descriptionText: String? {
         return descriptionLabel.text
     }
+    
+    var renderedImage: Data? {
+        return feedImageView.image?.pngData()
+    }
 }
 
 private class FakeRefreshControl: UIRefreshControl {
@@ -308,5 +334,18 @@ private class FakeRefreshControl: UIRefreshControl {
     
     override func endRefreshing() {
         _isRefreshing = false
+    }
+}
+
+private extension UIImage {
+    static func make(withColor color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        
+        return UIGraphicsImageRenderer(size: rect.size, format: format).image { rendererContext in
+            color.setFill()
+            rendererContext.fill(rect)
+        }
     }
 }
