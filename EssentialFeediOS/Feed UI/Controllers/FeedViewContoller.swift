@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import EssentialFeedMacos
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var onViewIsAppearing: ((FeedViewController) -> Void)?
     public var refrehController: FeedRefreshViewController?
