@@ -5,7 +5,7 @@
 //  Created by Temur on 31/01/2024.
 //
 
-import EssentialFeedMacos
+//import EssentialFeedMacos
 //final class FeedViewModel {
 //    typealias Observer<T> = (T) -> Void
 //    private let feedLoader: FeedLoader
