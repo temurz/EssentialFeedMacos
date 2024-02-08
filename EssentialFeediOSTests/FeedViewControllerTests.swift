@@ -224,21 +224,32 @@ final class FeedViewControllerTests: XCTestCase {
     }
     
     func test_feedImageView_cancelsImageURLPreloadingWhenNotNearVisibleAnymore() {
-            let image0 = makeImage(url: URL(string: "http://url-0.com")!)
-            let image1 = makeImage(url: URL(string: "http://url-1.com")!)
-            let (sut, loader) = makeSUT()
-
-            sut.loadViewIfNeeded()
-            loader.completeFeedLoading(with: [image0, image1])
-            XCTAssertEqual(loader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not near visible")
-
-            sut.simulateFeedImageViewNotNearVisible(at: 0)
-            XCTAssertEqual(loader.cancelledImageURLs, [image0.imageURL], "Expected first cancelled image URL request once first image is not near visible anymore")
-
-            sut.simulateFeedImageViewNotNearVisible(at: 1)
-            XCTAssertEqual(loader.cancelledImageURLs, [image0.imageURL, image1.imageURL], "Expected second cancelled image URL request once second image is not near visible anymore")
-        }
-
+        let image0 = makeImage(url: URL(string: "http://url-0.com")!)
+        let image1 = makeImage(url: URL(string: "http://url-1.com")!)
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [image0, image1])
+        XCTAssertEqual(loader.cancelledImageURLs, [], "Expected no cancelled image URL requests until image is not near visible")
+        
+        sut.simulateFeedImageViewNotNearVisible(at: 0)
+        XCTAssertEqual(loader.cancelledImageURLs, [image0.imageURL], "Expected first cancelled image URL request once first image is not near visible anymore")
+        
+        sut.simulateFeedImageViewNotNearVisible(at: 1)
+        XCTAssertEqual(loader.cancelledImageURLs, [image0.imageURL, image1.imageURL], "Expected second cancelled image URL request once second image is not near visible anymore")
+    }
+    
+    func test_feedImageView_doesNotRenderLoadedImageWhenNotVisibleAnymore() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        loader.completeFeedLoading(with: [makeImage()])
+        
+        let view = sut.simulateFeedImageViewNotVisible(at: 0)
+        loader.completeImageLoading(with: anyImageData())
+        
+        XCTAssertNil(view?.renderedImage, "Expected no rendered image when an image load finishes after the view is not visible anymore")
+    }
     
     //MARK: Helpers
     func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
@@ -247,6 +258,10 @@ final class FeedViewControllerTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(loader, file: file, line: line)
         return (sut, loader)
+    }
+    
+    func anyImageData() -> Data {
+        return UIImage.make(withColor: .red).pngData()!
     }
     
     func assertThat(_ sut: FeedViewController, isRendering feed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
@@ -392,12 +407,14 @@ private extension FeedViewController {
         ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
     }
     
-    func simulateFeedImageViewNotVisible(at row: Int) {
+    @discardableResult
+    func simulateFeedImageViewNotVisible(at row: Int) -> FeedImageCell? {
         let view = simulateFeedImageViewVisible(at: row)
         
         let delegate = tableView.delegate
         let indexPath = IndexPath(row: row, section: feedImageSection)
         delegate?.tableView?(tableView, didEndDisplaying: view!, forRowAt: indexPath)
+        return view
     }
     
     func numberOfRenderedFeedImageViews() -> Int {

@@ -79,6 +79,9 @@ Location</string>
                                                                 <fontDescription key="titleFontDescription" type="system" pointSize="60"/>
                                                                 <color key="baseForegroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="retryButtonTapped" destination="DKe-WE-rK4" eventType="touchUpInside" id="q0M-wR-nf5"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -121,11 +124,20 @@ Location</string>
                                         <constraint firstItem="ZUN-dN-6d5" firstAttribute="leading" secondItem="sQj-nx-bhx" secondAttribute="leadingMargin" id="cFh-lN-wrs"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="EYa-oW-eba" id="O69-eH-iSl"/>
+                                    <outlet property="feedImageContainer" destination="EEM-TT-GnM" id="fH4-Tt-HNb"/>
+                                    <outlet property="feedImageRetryButton" destination="HFG-bQ-4VR" id="m7C-aD-UfS"/>
+                                    <outlet property="feedImageView" destination="JzO-hR-WJp" id="GRQ-PR-8Xs"/>
+                                    <outlet property="locationContainer" destination="7bL-rL-aA7" id="Ovb-hZ-m7U"/>
+                                    <outlet property="locationLabel" destination="qqg-uG-OlX" id="mAy-RB-Du7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="YF1-Cq-pSO" id="Ocd-8q-WdS"/>
                             <outlet property="delegate" destination="YF1-Cq-pSO" id="rfZ-2f-Rtb"/>
+                            <outlet property="prefetchDataSource" destination="YF1-Cq-pSO" id="rnX-29-Uhu"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Feed" id="EbC-sp-oTE"/>

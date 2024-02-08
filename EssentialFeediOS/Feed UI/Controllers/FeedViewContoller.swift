@@ -21,7 +21,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.prefetchDataSource = self
         refresh()
         onViewIsAppearing = { [weak self] vc in
             self?.refreshControl?.beginRefreshing()
@@ -52,7 +51,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return cellController(at: indexPath).view()
+        return cellController(at: indexPath).view(in: tableView)
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
