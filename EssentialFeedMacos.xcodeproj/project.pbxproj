@@ -30,6 +30,7 @@
 		B83AA9822B20B3A40067DD59 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89CBABB2AF55D89003FA898 /* XCTestCase+MemoryLeakTracking.swift */; };
 		B83AA9832B20B6DE0067DD59 /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8023C282B0239BD00966469 /* FeedCacheTestHelpers.swift */; };
 		B83AA9842B20B84C0067DD59 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8023C2A2B023B0300966469 /* SharedTestHelpers.swift */; };
+		B83FE9032B7689D7008CD953 /* FeedPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83FE9022B7689D7008CD953 /* FeedPresenterTests.swift */; };
 		B842F3542B4F448B00907F0C /* EssentialFeediOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = B842F3532B4F448B00907F0C /* EssentialFeediOS.docc */; };
 		B842F35A2B4F448C00907F0C /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B842F3502B4F448B00907F0C /* EssentialFeediOS.framework */; };
 		B866A9122B6A8E5B00202C9F /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A9112B6A8E5B00202C9F /* FeedImageDataLoader.swift */; };
@@ -156,6 +157,7 @@
 		B83AA9792B20AF340067DD59 /* EssentialFeedCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedCacheIntegrationTests.swift; sourceTree = "<group>"; };
 		B83AA9812B20AFA90067DD59 /* EssentialFeedCacheIntegrationTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedCacheIntegrationTests.xctestplan; sourceTree = "<group>"; };
 		B83AA9852B20C2C40067DD59 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
+		B83FE9022B7689D7008CD953 /* FeedPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenterTests.swift; sourceTree = "<group>"; };
 		B842F34A2B4F420E00907F0C /* EssentialFeedMacosAPIEndToEndTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = EssentialFeedMacosAPIEndToEndTests.xctestplan; sourceTree = "<group>"; };
 		B842F3502B4F448B00907F0C /* EssentialFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B842F3532B4F448B00907F0C /* EssentialFeediOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = EssentialFeediOS.docc; sourceTree = "<group>"; };
@@ -323,6 +325,14 @@
 			path = EssentialFeedCacheIntegrationTests;
 			sourceTree = "<group>";
 		};
+		B83FE9012B7689BE008CD953 /* FeedPresentation */ = {
+			isa = PBXGroup;
+			children = (
+				B83FE9022B7689D7008CD953 /* FeedPresenterTests.swift */,
+			);
+			path = FeedPresentation;
+			sourceTree = "<group>";
+		};
 		B842F3512B4F448B00907F0C /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +487,7 @@
 		B89CBA992AF55BBF003FA898 /* EssentialFeedMacosTests */ = {
 			isa = PBXGroup;
 			children = (
+				B83FE9012B7689BE008CD953 /* FeedPresentation */,
 				B89CBABA2AF55D79003FA898 /* Helpers */,
 				B839943D2AF6C83200979305 /* FeedCache */,
 				B8023C2C2B023B4D00966469 /* FeedAPI */,
@@ -878,6 +889,7 @@
 				B8142C6D2B14DD9A008BB684 /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */,
 				B89CBABC2AF55D89003FA898 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				B8142C642B14D0F4008BB684 /* XCTestCase+FeedStoreSpecs.swift in Sources */,
+				B83FE9032B7689D7008CD953 /* FeedPresenterTests.swift in Sources */,
 				B8142C6B2B14DC5E008BB684 /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1130,6 +1142,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -1191,6 +1204,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
