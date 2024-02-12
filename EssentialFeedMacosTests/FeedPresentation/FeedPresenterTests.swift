@@ -13,6 +13,10 @@ struct FeedErrorViewModel {
     static var noError: FeedErrorViewModel {
         return FeedErrorViewModel(message: nil)
     }
+    
+    static func error(message: String) -> FeedErrorViewModel {
+        return FeedErrorViewModel(message: message)
+    }
 }
 
 protocol FeedErrorView {
@@ -56,7 +60,14 @@ final class FeedPresenter {
         loadingView.display(FeedLoadingViewModel(isLoading: false))
     }
     
-     
+    func didFinishLoadingFeed(with error: Error) {
+        loadingView.display(FeedLoadingViewModel(isLoading: false))
+        errorView.display(FeedErrorViewModel(message: feedError))
+    }
+    
+    private var feedError: String {
+        return NSLocalizedString("FEED_VIEW_CONNECTION_ERROR", tableName: "Feed", bundle: Bundle(for: FeedPresenter.self) , comment: "Error message displayed when we cannot load the image feed from the server")
+    }
 }
 
 class FeedPresenterTests: XCTestCase {
@@ -89,6 +100,17 @@ class FeedPresenterTests: XCTestCase {
         ])
     }
     
+    func test_didFinishLoadingFeed_displayErrorOnFinishingWithError() {
+        let (sut, view) = makeSUT()
+        
+        sut.didFinishLoadingFeed(with: anyNSError())
+        
+        XCTAssertEqual(view.messages, [
+            .display(isLoading: false),
+            .display(errorMessage: localized("FEED_VIEW_CONNECTION_ERROR"))
+        ])
+    }
+    
     //MARK: - Helpers
     private func makeSUT() -> (FeedPresenter, ViewSpy) {
         let view = ViewSpy()
@@ -103,24 +125,34 @@ class FeedPresenterTests: XCTestCase {
         return FeedImage(id: UUID(), description: description, location: location, imageURL: url)
     }
     
+    func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
+        let table = "Feed"
+        let bundle = Bundle(for: FeedPresenter.self)
+        let value = bundle.localizedString(forKey: key, value: nil, table: table)
+        if value == key {
+            XCTFail("Missing localized string for key: \(key) in table: \(table)", file: file, line: line)
+        }
+        return value
+    }
+    
     private class ViewSpy: FeedErrorView, FeedLoadingView, FeedView {
-        enum Message: Equatable {
+        enum Message: Hashable {
             case display(errorMessage: String?)
             case display(isLoading: Bool)
             case display(feed: [FeedImage])
         }
-        private(set) var messages = [Message]()
+        private(set) var messages = Set<Message>()
         
         func display(_ viewModel: FeedErrorViewModel) {
-            messages.append(.display(errorMessage: viewModel.message))
+            messages.insert(.display(errorMessage: viewModel.message))
         }
         
         func display(_ viewModel: FeedLoadingViewModel) {
-            messages.append(.display(isLoading: viewModel.isLoading))
+            messages.insert(.display(isLoading: viewModel.isLoading))
         }
         
         func display(_ viewModel: FeedViewModel) {
-            messages.append(.display(feed: viewModel.feed))
+            messages.insert(.display(feed: viewModel.feed))
         }
     }
 }
