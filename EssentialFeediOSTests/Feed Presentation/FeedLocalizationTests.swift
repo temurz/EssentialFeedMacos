@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import EssentialFeediOS
+@testable import EssentialFeedMacos
 
 final class FeedLocalizationTests: XCTestCase {
 
