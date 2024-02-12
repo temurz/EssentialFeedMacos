@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import XCTest
+import XCTest 
 @testable import EssentialFeedMacos
 
 final class FeedLocalizationTests: XCTestCase {
