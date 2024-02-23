@@ -25,7 +25,7 @@ class RemoteFeedImageDataLoader {
             case let .failure(error):
                 completion(.failure(error))
             case let .success((data, response)):
-                if response.statusCode != 200 {
+                if response.statusCode != 200 || data.isEmpty {
                     completion(.failure(Error.invalidData))
                 }
             }
@@ -78,6 +78,15 @@ class RemoteFeedImageDataLoaderTests: XCTestCase {
                 client.complete(withStatusCode: code, data: anyData(), at: index)
             }
         }
+    }
+    
+    func test_loadImageDataFromURL_deliversInvalidDataErrorOn200HTTPResponseWithEmptyData() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, toCompleteWith: failure(.invalidData), when: {
+            let emptyData = Data()
+            client.complete(withStatusCode: 200, data: emptyData)
+        })
     }
 
     private func makeSUT(url: URL = anyUrl(), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteFeedImageDataLoader, client: HTTPClientSpy) {
