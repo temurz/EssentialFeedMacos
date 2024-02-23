@@ -11,7 +11,7 @@ func uniqueImage() -> FeedImage {
     return FeedImage(id: UUID(),
                     description: nil,
                     location: nil,
-                    imageURL: anyUrl() )
+                    imageURL: anyURL() )
 }
 
 func uniqueImageFeed() -> (models: [FeedImage], local: [LocalFeedImage]) {
