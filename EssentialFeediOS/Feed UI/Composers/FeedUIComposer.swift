@@ -5,8 +5,8 @@
 //  Created by Temur on 31/01/2024.
 //
 
-import EssentialFeedMacos
 import UIKit
+import EssentialFeedMacos
 public final class FeedUIComposer {
     private init() {}
     
