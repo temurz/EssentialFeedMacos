@@ -106,7 +106,6 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
     //MARK: - Helpers
 
     func makeFeedLoader(currentDate: Date = Date() ,file: StaticString = #file, line: UInt = #line) -> LocalFeedLoader {
-        let storeBundle = Bundle(for: CoreDataFeedStore.self)
         let storeURL = testSpecificStoreURL()
         let store = try! CoreDataFeedStore.init(storeURL: storeURL)
         let sut = LocalFeedLoader(store: store, currentDate: { currentDate })

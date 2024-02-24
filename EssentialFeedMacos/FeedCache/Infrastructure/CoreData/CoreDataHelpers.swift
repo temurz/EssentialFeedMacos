@@ -24,7 +24,7 @@ internal extension NSPersistentContainer {
         
         var loadError: Swift.Error?
         container.loadPersistentStores { loadError = $1 }
-        try loadError.map { throw LoadingError.failedToLoadPersistentStores($0) }
+        try loadError.map { throw $0 }
 
         return container
     }
