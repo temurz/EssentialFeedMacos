@@ -10,7 +10,7 @@ import EssentialFeedMacos
 
 
 
-final class RemoteFeedLoaderTests: XCTestCase {
+final class LoadFeedFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
         //systemUnderTest
@@ -119,8 +119,8 @@ final class RemoteFeedLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedItem, json: [String: Any]) {
-        let item = FeedItem(id: id, description: description, location: location, imageURL: imageURL)
+    private func makeItem(id: UUID, description: String? = nil, location: String? = nil, imageURL: URL) -> (model: FeedImage, json: [String: Any]) {
+        let item = FeedImage(id: id, description: description, location: location, imageURL: imageURL)
         
         let jsonModel = [
             "id": id.uuidString,
@@ -155,30 +155,5 @@ final class RemoteFeedLoaderTests: XCTestCase {
         action()
         
         wait(for: [exp], timeout: 1.0)
-    }
-
-    private class HTTPClientSpy: HTTPClient {
-        var requestedURLs: [URL] {
-            return messages.map({$0.url})
-        }
-        var messages = [(url: URL, completion: (HTTPClientResult) -> Void)]()
-        
-        
-        func get(from url: URL, completion: @escaping (HTTPClientResult) -> ()) {
-            messages.append((url, completion))
-        }
-        
-        func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(.failure(error))
-        }
-        
-        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
-            let response = HTTPURLResponse(
-                url: requestedURLs[index],
-                statusCode: code,
-                httpVersion: nil,
-                headerFields: nil)!
-            messages[index].completion(.success(data, response))
-        }
     }
 }
