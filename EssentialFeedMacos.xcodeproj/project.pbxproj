@@ -212,6 +212,7 @@
 		B8D3F4232B8A0E1900043027 /* FeedImageDataStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataStoreSpy.swift; sourceTree = "<group>"; };
 		B8D3F4252B8A0EA400043027 /* CacheFeedImageDataUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedImageDataUseCaseTests.swift; sourceTree = "<group>"; };
 		B8D3F4272B8A121000043027 /* CoreDataFeedImageDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFeedImageDataStoreTests.swift; sourceTree = "<group>"; };
+		B8D3F4292B8A27D300043027 /* FeedStore 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "FeedStore 2.xcdatamodel"; sourceTree = "<group>"; };
 		B8E308AE2AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedMacosAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E308B02AF65E840096291E /* EssentialFeedMacosAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedMacosAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		B8F04C082B8948CC009D5357 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadFeedImageDataFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
@@ -1434,6 +1435,7 @@
 		B8142C752B14E9C2008BB684 /* FeedStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B8D3F4292B8A27D300043027 /* FeedStore 2.xcdatamodel */,
 				B8142C762B14E9C2008BB684 /* FeedStore.xcdatamodel */,
 			);
 			currentVersion = B8142C762B14E9C2008BB684 /* FeedStore.xcdatamodel */;
