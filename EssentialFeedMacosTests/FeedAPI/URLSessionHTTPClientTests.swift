@@ -121,8 +121,6 @@ class URLSessionHTTPClientTests: XCTestCase {
         return HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
     }
     
-    private func anyData() -> Data { return Data() }
-    
     private func resultErrorFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #filePath, line: UInt = #line) -> Error? {
         let receivedResult = resultFor(data: data, response: response, error: error, file: file, line: line)
         

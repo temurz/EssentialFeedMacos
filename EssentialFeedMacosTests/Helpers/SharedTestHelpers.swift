@@ -14,3 +14,5 @@ func anyNSError() -> NSError {
 func anyURL() -> URL {
     return URL(string: "http://any-url.com")!
 }
+
+func anyData() -> Data { return Data() }
