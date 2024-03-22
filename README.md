@@ -8,22 +8,26 @@
 
 ### Narrative #1
 
-```
+=======
+# Essential Feed App – Image Feed Feature
+[![Build Status](https://travis-ci.com/essentialdevelopercom/essential-feed-case-study.svg?branch=master)](https://travis-ci.com/essentialdevelopercom/essential-feed-case-study)
+## BDD Specs
+### Story: Customer requests to see their image feed
+### Narrative #1
 As an online customer
 I want the app to automatically load my latest image feed
 So I can always enjoy the newest images of my friends
 ```
 
 #### Scenarios (Acceptance criteria)
-
 ```
 Given the customer has connectivity
  When the customer requests to see their feed
  Then the app should display the latest feed from remote
   And replace the cache with the new feed
 ```
-
 ### Narrative #2
+
 
 ```
 As an offline customer
@@ -32,7 +36,6 @@ So I can always enjoy images of my friends
 ```
 
 #### Scenarios (Acceptance criteria)
-
 ```
 Given the customer doesn't have connectivity
   And there’s a cached version of the feed
@@ -53,9 +56,7 @@ Given the customer doesn't have connectivity
 ```
 
 ## Use Cases
-
 ### Load Feed From Remote Use Case
-
 #### Data:
 - URL
 
@@ -106,9 +107,7 @@ Given the customer doesn't have connectivity
 5. System delivers image feed.
 
 #### Retrieval error course (sad path):
-1. System deletes cache.
-2. System delivers error.
-
+1. System delivers error.
 #### Expired cache course (sad path): 
 1. System delivers no feed images.
 
@@ -134,7 +133,8 @@ Given the customer doesn't have connectivity
 1. System delivers error.
 
 #### Empty cache course (sad path):
-1. System delivers not found error.
+
+1. System delivers no image data.
 
 ---
 
@@ -174,27 +174,13 @@ Given the customer doesn't have connectivity
 
 ---
 
-### Cache Feed Image Data Use Case
-
-#### Data:
-- Image Data
-
-#### Primary course (happy path):
-1. Execute "Save Image Data" command with above data.
-2. System caches image data.
-3. System delivers success message.
-
-#### Saving error course (sad path):
-1. System delivers error.
-
----
-
 ## Flowchart
 
 ![Feed Loading Feature](feed_flowchart.png)
 
+## Architecture
+![Feed Loading Feature](feed_architecture.png)
 ## Model Specs
-
 ### Feed Image
 
 | Property      | Type                |
@@ -205,10 +191,8 @@ Given the customer doesn't have connectivity
 | `url`	        | `URL`               |
 
 ### Payload contract
-
 ```
-GET /feed
-
+GET *url* (TBD)
 200 RESPONSE
 
 {
@@ -237,106 +221,3 @@ GET /feed
 	]
 }
 ```
-
----
-
-## Image Comments Feature Specs
-
-### Story: Customer requests to see image comments
-
-### Narrative
-
-```
-As an online customer
-I want the app to load image commments
-So I can see how people are engaging with images in my feed
-```
-
-#### Scenarios (Acceptance criteria)
-
-```
-Given the customer has connectivity
- When the customer requests to see comments on an image
- Then the app should display all comments for that image
-```
-
-```
-Given the customer doesn't have connectivity
- When the customer requests to see comments on an image
- Then the app should display an error message
-```
-
-## Use Cases
-
-### Load Image Comments From Remote Use Case
-
-#### Data:
-- ImageID
-
-#### Primary course (happy path):
-1. Execute "Load Image Comments" command with above data.
-2. System loads data from remote service.
-3. System validates data.
-4. System creates comments from valid data.
-5. System delivers comments.
-
-#### Invalid data – error course (sad path):
-1. System delivers invalid data error.
-
-#### No connectivity – error course (sad path):
-1. System delivers connectivity error.
-
----
-
-## Model Specs
-
-### Image Comment
-
-| Property          | Type                    |
-|-------------------|-------------------------|
-| `id`              | `UUID`                  |
-| `message` 	    | `String`			      |
-| `created_at`      | `Date` (ISO8601 String) |
-| `author` 			| `CommentAuthorObject`   |
-
-### Image Comment Author
-
-| Property          | Type                |
-|-------------------|---------------------|
-| `username` 	    | `String`			  |
-
-### Payload contract
-
-```
-GET /image/{image-id}/comments
-
-2xx RESPONSE
-
-{
-	"items": [
-		{
-			"id": "a UUID",
-			"message": "a message",
-			"created_at": "2020-05-20T11:24:59+0000",
-			"author": {
-				"username": "a username"
-			}
-		},
-		{
-			"id": "another UUID",
-			"message": "another message",
-			"created_at": "2020-05-19T14:23:53+0000",
-			"author": {
-				"username": "another username"
-			}
-		},
-		...
-	]
-}
-```
-
----
-
-## App Architecture
-
-![](architecture.png)
