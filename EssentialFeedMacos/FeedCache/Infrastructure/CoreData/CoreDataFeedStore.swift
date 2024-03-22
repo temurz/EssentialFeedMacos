@@ -25,7 +25,7 @@ public class CoreDataFeedStore {
         let bundle = Bundle(for: CoreDataFeedStore.self)
 //        container = try NSPersistentContainer.load(modelName: "FeedStore", url: storeURL, in: bundle)
 //        context = container.newBackgroundContext()
-        guard let model = CoreDataFeedStore.model else {
+        guard CoreDataFeedStore.model != nil else {
             throw StoreError.modelNotFound
         }
         
