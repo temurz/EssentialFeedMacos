@@ -6,6 +6,7 @@
 //
 
 import EssentialFeedMacos
+import EssentialFeediOS
 internal final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     var presenter: FeedPresenter?
     private let feedLoader: FeedLoader

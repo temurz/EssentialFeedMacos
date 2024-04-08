@@ -7,6 +7,7 @@
 
 import UIKit
 import EssentialFeedMacos
+import EssentialFeediOS
 internal final class FeedImageDataLoaderPresentationAdapter<View: FeedImageView, Image>: FeedImageCellControllerDelegate where View.Image == UIImage {
     private let model: FeedImage
     private let imageLoader: FeedImageDataLoader
