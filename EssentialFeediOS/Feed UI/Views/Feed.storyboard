@@ -93,13 +93,13 @@ Location</string>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFG-bQ-4VR">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="353"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" title="⟳">
-                                                                <fontDescription key="titleFontDescription" type="system" pointSize="60"/>
-                                                                <color key="baseForegroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </buttonConfiguration>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" title="⟳">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
                                                             <connections>
-                                                                <action selector="retryButtonTapped" destination="DKe-WE-rK4" eventType="touchUpInside" id="q0M-wR-nf5"/>
+                                                                <action selector="retryButtonTapped" destination="DKe-WE-rK4" eventType="touchUpInside" id="H7f-aP-wRL"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -147,7 +147,7 @@ Location</string>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="EYa-oW-eba" id="O69-eH-iSl"/>
                                     <outlet property="feedImageContainer" destination="EEM-TT-GnM" id="fH4-Tt-HNb"/>
-                                    <outlet property="feedImageRetryButton" destination="HFG-bQ-4VR" id="m7C-aD-UfS"/>
+                                    <outlet property="feedImageRetryButton" destination="HFG-bQ-4VR" id="rT1-6c-ISZ"/>
                                     <outlet property="feedImageView" destination="JzO-hR-WJp" id="GRQ-PR-8Xs"/>
                                     <outlet property="locationContainer" destination="7bL-rL-aA7" id="Ovb-hZ-m7U"/>
                                     <outlet property="locationLabel" destination="qqg-uG-OlX" id="mAy-RB-Du7"/>
