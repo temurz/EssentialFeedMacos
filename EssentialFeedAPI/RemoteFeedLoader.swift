@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import EssentialFeedMacos
 
 
 public class RemoteFeedLoader: FeedLoader {
