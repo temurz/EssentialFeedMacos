@@ -7,7 +7,6 @@
 
 import XCTest
 import EssentialFeedMacos
-import EssentialFeedAPI
 
 
 final class LoadFeedFromRemoteUseCaseTests: XCTestCase {

@@ -7,7 +7,7 @@
 
 import XCTest
 import EssentialFeedMacos
-import EssentialFeedAPI
+
 class LoadFeedImageDataFromRemoteUseCaseTests: XCTestCase {
 
     func test_init_doesNotPerformAnyURLRequest() {

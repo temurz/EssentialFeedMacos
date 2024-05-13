@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import EssentialFeedAPI
+import EssentialFeedMacos
 class HTTPClientSpy: HTTPClient {
     private struct Task: HTTPClientTask {
         let callback: () -> Void
