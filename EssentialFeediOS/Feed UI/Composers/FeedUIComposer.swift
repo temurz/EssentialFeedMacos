@@ -8,11 +8,26 @@
 import UIKit
 import EssentialFeedMacos
 import EssentialFeediOS
+import Combine
 public final class FeedUIComposer {
     private init() {}
     
-    public static func feedComposeWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
-        let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
+//    public static func feedComposeWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
+//        let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
+//        
+//        let feedController = makeWith(delegate: presentationAdapter, title: FeedPresenter.title)
+//        
+//        
+//        presentationAdapter.presenter = FeedPresenter(
+//            errorView: WeakRefVirtualProxy(object: feedController),
+//            loadingView: WeakRefVirtualProxy(object: feedController),
+//            feedView: FeedViewAdapter(controller: feedController,
+//                                    imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)))
+//        return feedController
+//    }
+    
+    public static func feedComposeWith(feedLoader: @escaping () -> FeedLoader.Publisher, imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher) -> FeedViewController {
+        let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: { feedLoader().dispatchOnMainQueue() })
         
         let feedController = makeWith(delegate: presentationAdapter, title: FeedPresenter.title)
         
@@ -21,7 +36,7 @@ public final class FeedUIComposer {
             errorView: WeakRefVirtualProxy(object: feedController),
             loadingView: WeakRefVirtualProxy(object: feedController),
             feedView: FeedViewAdapter(controller: feedController,
-                                    imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)))
+                                      imageLoader: { imageLoader($0).dispatchOnMainQueue() }))
         return feedController
     }
     
