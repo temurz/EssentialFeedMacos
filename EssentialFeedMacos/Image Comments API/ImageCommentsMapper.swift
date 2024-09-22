@@ -6,7 +6,7 @@
 //
 
 import Foundation
-final class ImageCommentsMapper {
+public final class ImageCommentsMapper {
     private struct Root: Decodable {
         private let items: [Item]
         
@@ -27,7 +27,7 @@ final class ImageCommentsMapper {
     }
     
     private  static var OK_200: Int {return 200}
-    internal static func map(_ data: Data, from response: HTTPURLResponse) throws -> [ImageComment] {
+    public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [ImageComment] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         guard isOK(response), let root = try? decoder.decode(Root.self, from: data) else {
