@@ -7,25 +7,28 @@
 
 import EssentialFeediOS
 import EssentialFeedMacos
-class LoaderSpy: FeedLoader, FeedImageDataLoader {
+import Combine
+class LoaderSpy: FeedImageDataLoader {
     //FeedLoader
     var loadFeedCallCount: Int {
         return feedRequests.count
     }
     
-    private var feedRequests = [(FeedLoader.Result) -> ()]()
+    private var feedRequests = [PassthroughSubject<[FeedImage],Error>]()
     
-    func load(completion: @escaping (FeedLoader.Result) -> Void) {
-        feedRequests.append(completion)
+    func loadPublisher() -> AnyPublisher<[FeedImage], Error> {
+        let publisher = PassthroughSubject<[FeedImage],Error>()
+        feedRequests.append(publisher)
+        return publisher.eraseToAnyPublisher()
     }
     
     func completeFeedLoading(with feed: [FeedImage] = [], at index: Int = 0) {
-        feedRequests[index](.success(feed))
+        feedRequests[index].send(feed)
     }
     
     func completeFeedLoadingWithError(at index: Int) {
         let error = NSError(domain: "an error", code: 0)
-        feedRequests[index](.failure(error))
+        feedRequests[index].send(completion: .failure(error))
     }
     
     private struct TaskSpy: FeedImageDataLoaderTask {
