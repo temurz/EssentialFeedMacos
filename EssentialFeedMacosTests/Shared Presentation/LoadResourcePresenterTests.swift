@@ -61,10 +61,6 @@ final class LoadResourcePresenterTests: XCTestCase {
         return (presenter, view)
     }
     
-    private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
-        return FeedImage(id: UUID(), description: description, location: location, imageURL: url)
-    }
-    
     func localized(_ key: String, file: StaticString = #file, line: UInt = #line) -> String {
         let table = "Shared"
         let bundle = Bundle(for: SUT.self)
