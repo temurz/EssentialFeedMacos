@@ -6,15 +6,21 @@
 //
 
 import Foundation
+public protocol ResourceView {
+    func display(_ viewModel: String)
+}
 public class LoadResourcePresenter {
+    public typealias Mapper = (String) -> String
     private let loadingView: FeedLoadingView
     private let errorView: FeedErrorView
-    private let feedView: FeedView
+    private let resourceView: ResourceView
+    private let mapper: Mapper
     
-    public init(errorView: FeedErrorView, loadingView: FeedLoadingView, feedView: FeedView) {
+    public init(errorView: FeedErrorView, loadingView: FeedLoadingView, resourceView: ResourceView , mapper: @escaping Mapper) {
         self.errorView = errorView
         self.loadingView = loadingView
-        self.feedView = feedView
+        self.resourceView = resourceView
+        self.mapper = mapper
     }
     
     public func didStartLoading() {
@@ -22,8 +28,8 @@ public class LoadResourcePresenter {
         loadingView.display(FeedLoadingViewModel(isLoading: true))
     }
     
-    public func didFinishLoadingFeed(with feed: [FeedImage]) {
-        feedView.display(FeedViewModel(feed: feed))
+    public func didFinishLoading(with resource: String) {
+        resourceView.display(mapper(resource))
         loadingView.display(FeedLoadingViewModel(isLoading: false))
     }
     
