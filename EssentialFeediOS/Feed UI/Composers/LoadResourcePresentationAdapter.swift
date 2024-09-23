@@ -29,19 +29,19 @@ import Combine
 //        }
 //    }
 //}
-public final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
-    var presenter: LoadResourcePresenter<[FeedImage], FeedViewAdapter>?
+public final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
+    var presenter: LoadResourcePresenter<Resource, View>?
     private var cancellable: Cancellable?
-    private let feedLoader: () -> AnyPublisher<[FeedImage],Error>
+    private let loader: () -> AnyPublisher<Resource,Error>
     
-    public init(feedLoader: @escaping () -> AnyPublisher<[FeedImage],Error>) {
-        self.feedLoader = feedLoader
+    public init(loader: @escaping () -> AnyPublisher<Resource,Error>) {
+        self.loader = loader
     }
     
-    public func didRequestFeedRefresh() {
+    public func loadResource() {
         presenter?.didStartLoading()
         
-        cancellable = feedLoader().sink { [weak self] completion in
+        cancellable = loader().sink { [weak self] completion in
             switch completion {
             case .finished: break
             case let .failure(error):
@@ -50,5 +50,12 @@ public final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
         } receiveValue: { [weak self] feed in
             self?.presenter?.didFinishLoading(with: feed)
         }
+    }
+}
+
+
+extension LoadResourcePresentationAdapter: FeedViewControllerDelegate {
+    public func didRequestFeedRefresh() {
+        loadResource()
     }
 }
