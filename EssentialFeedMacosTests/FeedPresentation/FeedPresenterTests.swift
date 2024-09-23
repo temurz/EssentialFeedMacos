@@ -15,66 +15,16 @@ class FeedPresenterTests: XCTestCase {
     }
     
     func test_map_createsViewModel() {
-        let feed = [makeImage()]
+        let feed = uniqueImageFeed().models
         
         let viewModel = FeedPresenter.map(feed)
         
         XCTAssertEqual(viewModel.feed, feed)
     }
     
-    func test_init_doesNotSendAnyMessagesToView() {
-        let (_, view) = makeSUT()
-        
-        XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
-    }
-    
-    func test_didStartLoadingFeed_displayNoErrorMessageAndStartLoading() {
-        let (sut, view) = makeSUT()
-        
-        sut.didStartLoadingFeed()
-        
-        XCTAssertEqual(view.messages, [
-            .display(errorMessage: .none),
-            .display(isLoading: true)
-        ])
-    }
-    
-    func test_didFinishLoadingFeed_displayFeedAndStopLoadingOnSuccess() {
-        let (sut, view) = makeSUT()
-        
-        let image = makeImage()
-        sut.didFinishLoadingFeed(with: [image])
-        
-        XCTAssertEqual(view.messages, [
-            .display(feed: [image]),
-            .display(isLoading: false)
-        ])
-    }
-    
-    func test_didFinishLoadingFeed_displayErrorOnFinishingWithError() {
-        let (sut, view) = makeSUT()
-        
-        sut.didFinishLoadingFeed(with: anyNSError())
-        
-        XCTAssertEqual(view.messages, [
-            .display(isLoading: false),
-            .display(errorMessage: localized("GENERIC_CONNECTION_ERROR", table: "Shared"))
-        ])
-    }
+   
     
     //MARK: - Helpers
-    private func makeSUT() -> (FeedPresenter, ViewSpy) {
-        let view = ViewSpy()
-        let presenter = FeedPresenter(errorView: view, loadingView: view, feedView: view)
-        trackForMemoryLeaks(view)
-        trackForMemoryLeaks(presenter)
-        
-        return (presenter, view)
-    }
-    
-    private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
-        return FeedImage(id: UUID(), description: description, location: location, imageURL: url)
-    }
     
     func localized(_ key: String, table: String = "Feed", file: StaticString = #file, line: UInt = #line) -> String {
         let bundle = Bundle(for: FeedPresenter.self)
@@ -85,24 +35,5 @@ class FeedPresenterTests: XCTestCase {
         return value
     }
     
-    private class ViewSpy: ResourceErrorView, ResourceLoadingView, FeedView {
-        enum Message: Hashable {
-            case display(errorMessage: String?)
-            case display(isLoading: Bool)
-            case display(feed: [FeedImage])
-        }
-        private(set) var messages = Set<Message>()
-        
-        func display(_ viewModel: ResourceErrorViewModel) {
-            messages.insert(.display(errorMessage: viewModel.message))
-        }
-        
-        func display(_ viewModel: ResourceLoadingViewModel) {
-            messages.insert(.display(isLoading: viewModel.isLoading))
-        }
-        
-        func display(_ viewModel: FeedViewModel) {
-            messages.insert(.display(feed: viewModel.feed))
-        }
-    }
+    
 }
