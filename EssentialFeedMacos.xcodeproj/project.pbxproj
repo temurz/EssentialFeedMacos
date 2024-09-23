@@ -37,6 +37,8 @@
 		B855B7492CA1C186008031F2 /* SharedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855B7482CA1C186008031F2 /* SharedLocalizationTests.swift */; };
 		B855B74A2CA1C20F008031F2 /* Shared.strings in Resources */ = {isa = PBXBuildFile; fileRef = B855B74C2CA1C20F008031F2 /* Shared.strings */; };
 		B855B74F2CA1C620008031F2 /* SharedLocalizationTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855B74E2CA1C620008031F2 /* SharedLocalizationTestHelpers.swift */; };
+		B855B7512CA1CA0E008031F2 /* ResourceLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855B7502CA1CA0E008031F2 /* ResourceLoadingView.swift */; };
+		B855B7532CA1CA71008031F2 /* ResourceLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855B7522CA1CA71008031F2 /* ResourceLoadingViewModel.swift */; };
 		B866A9192B6A9F7100202C9F /* FeedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A9182B6A9F7100202C9F /* FeedImageViewController.swift */; };
 		B866A99E2B74557300202C9F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B866A99D2B74557300202C9F /* Feed.storyboard */; };
 		B866A9A02B74562800202C9F /* Feed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B866A99F2B74562800202C9F /* Feed.xcassets */; };
@@ -171,6 +173,8 @@
 		B855B74B2CA1C20F008031F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Shared.strings; sourceTree = "<group>"; };
 		B855B74D2CA1C211008031F2 /* kaa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kaa; path = kaa.lproj/Shared.strings; sourceTree = "<group>"; };
 		B855B74E2CA1C620008031F2 /* SharedLocalizationTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedLocalizationTestHelpers.swift; sourceTree = "<group>"; };
+		B855B7502CA1CA0E008031F2 /* ResourceLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoadingView.swift; sourceTree = "<group>"; };
+		B855B7522CA1CA71008031F2 /* ResourceLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoadingViewModel.swift; sourceTree = "<group>"; };
 		B866A9182B6A9F7100202C9F /* FeedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewController.swift; sourceTree = "<group>"; };
 		B866A99D2B74557300202C9F /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		B866A99F2B74562800202C9F /* Feed.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Feed.xcassets; sourceTree = "<group>"; };
@@ -387,6 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				B855B7442CA1B705008031F2 /* LoadResourcePresenter.swift */,
+				B855B7502CA1CA0E008031F2 /* ResourceLoadingView.swift */,
+				B855B7522CA1CA71008031F2 /* ResourceLoadingViewModel.swift */,
 				B855B74C2CA1C20F008031F2 /* Shared.strings */,
 			);
 			path = "Shared Presentation";
@@ -945,8 +951,10 @@
 				B8DC4E712BEA659F006A9A9D /* FeedImageDataCache.swift in Sources */,
 				B855B7452CA1B705008031F2 /* LoadResourcePresenter.swift in Sources */,
 				B89CBAB22AF55CD4003FA898 /* FeedLoader.swift in Sources */,
+				B855B7512CA1CA0E008031F2 /* ResourceLoadingView.swift in Sources */,
 				B8FC48182B1D0C2A0092B308 /* CoreDataHelpers.swift in Sources */,
 				B8DC4FC42BF2CE41006A9A9D /* RemoteFeedImageDataLoader.swift in Sources */,
+				B855B7532CA1CA71008031F2 /* ResourceLoadingViewModel.swift in Sources */,
 				B89CBAB02AF55CC9003FA898 /* FeedItem.swift in Sources */,
 				B8142C712B14E172008BB684 /* CoreDataFeedStore.swift in Sources */,
 				B8FC481B2B1D14240092B308 /* ManagedCache.swift in Sources */,
