@@ -10,7 +10,7 @@ import EssentialFeedMacos
 public protocol FeedViewControllerDelegate {
     func didRequestFeedRefresh()
 }
-public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, FeedErrorView {
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
     private var onViewIsAppearing: ((FeedViewController) -> Void)?
     
     @IBOutlet private(set) public var errorView: ErrorView?
@@ -56,7 +56,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         }
     }
     
-    public func display(_ viewModel: FeedErrorViewModel) {
+    public func display(_ viewModel: ResourceErrorViewModel) {
         if let message = viewModel.message {
             errorView?.show(message: message)
         }else {
