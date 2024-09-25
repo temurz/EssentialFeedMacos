@@ -56,6 +56,7 @@
 		B855B7842CA43DC6008031F2 /* ImageCommentsCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855B7832CA43DC6008031F2 /* ImageCommentsCellController.swift */; };
 		B855B7872CA43F31008031F2 /* ImageComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B855B7862CA43F31008031F2 /* ImageComments.storyboard */; };
 		B855B7892CA468C5008031F2 /* ImageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855B7882CA468C5008031F2 /* ImageCommentCell.swift */; };
+		B855B78B2CA47CEC008031F2 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B855B78A2CA47CEC008031F2 /* CellController.swift */; };
 		B866A9192B6A9F7100202C9F /* FeedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866A9182B6A9F7100202C9F /* FeedImageViewController.swift */; };
 		B866A99E2B74557300202C9F /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B866A99D2B74557300202C9F /* Feed.storyboard */; };
 		B866A9A02B74562800202C9F /* Feed.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B866A99F2B74562800202C9F /* Feed.xcassets */; };
@@ -210,6 +211,7 @@
 		B855B7832CA43DC6008031F2 /* ImageCommentsCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentsCellController.swift; sourceTree = "<group>"; };
 		B855B7862CA43F31008031F2 /* ImageComments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageComments.storyboard; sourceTree = "<group>"; };
 		B855B7882CA468C5008031F2 /* ImageCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentCell.swift; sourceTree = "<group>"; };
+		B855B78A2CA47CEC008031F2 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		B866A9182B6A9F7100202C9F /* FeedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewController.swift; sourceTree = "<group>"; };
 		B866A99D2B74557300202C9F /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		B866A99F2B74562800202C9F /* Feed.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Feed.xcassets; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				B896658C2B51A24D0029ABBA /* ListViewContoller.swift */,
+				B855B78A2CA47CEC008031F2 /* CellController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1078,6 +1081,7 @@
 				B866A9A42B746C0E00202C9F /* UIImageView+Animations.swift in Sources */,
 				B89665942B5471CA0029ABBA /* UIView+Extension.swift in Sources */,
 				B896658D2B51A24D0029ABBA /* ListViewContoller.swift in Sources */,
+				B855B78B2CA47CEC008031F2 /* CellController.swift in Sources */,
 				B866A9A22B746B0A00202C9F /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

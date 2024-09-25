@@ -10,7 +10,7 @@ import EssentialFeedMacos
 //public protocol FeedViewControllerDelegate {
 //    func didRequestFeedRefresh()
 //}
-public typealias CellController = UITableViewDataSource & UITableViewDelegate & UITableViewDataSourcePrefetching
+
 
 public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
     private var onViewIsAppearing: ((ListViewController) -> Void)?
@@ -77,13 +77,13 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let controller = cellController(at: indexPath)
-        return controller.tableView(tableView, cellForRowAt: indexPath)
+        let ds = cellController(at: indexPath).dataSource
+        return ds.tableView(tableView, cellForRowAt: indexPath)
     }
     
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let controller = removeLoadingController(forRowAt: indexPath )
-        controller?.tableView?(tableView, didEndDisplaying: cell, forRowAt: indexPath)
+        let dl = removeLoadingController(forRowAt: indexPath)?.delegate
+        dl?.tableView?(tableView, didEndDisplaying: cell, forRowAt: indexPath)
     }
     
     public override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -92,14 +92,15 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            cellController(at: indexPath).tableView(tableView, prefetchRowsAt: [indexPath])
+            let dsp = cellController(at: indexPath).dataSourcePrefetching
+            dsp?.tableView(tableView, prefetchRowsAt: [indexPath])
         }
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            let controller = removeLoadingController(forRowAt: indexPath )
-            controller?.tableView?(tableView, cancelPrefetchingForRowsAt: [indexPath])
+            let dsp = removeLoadingController(forRowAt: indexPath )?.dataSourcePrefetching
+            dsp?.tableView?(tableView, cancelPrefetchingForRowsAt: [indexPath])
         }
     }
     
