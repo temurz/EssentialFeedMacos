@@ -542,6 +542,7 @@
 		B89CBA992AF55BBF003FA898 /* EssentialFeedMacosTests */ = {
 			isa = PBXGroup;
 			children = (
+				B89CBABA2AF55D79003FA898 /* Helpers */,
 				B855B7402CA1B5D9008031F2 /* Shared Presentation */,
 				B8F117282C7C6D350005038E /* Shared API Infra */,
 				B8F117272C7C6D2F0005038E /* Shared API */,
@@ -549,7 +550,6 @@
 				B855B75A2CA41C10008031F2 /* Image Comments Presentation */,
 				B8DC4FBA2BF2CE16006A9A9D /* FeedAPI */,
 				B83FE9012B7689BE008CD953 /* FeedPresentation */,
-				B89CBABA2AF55D79003FA898 /* Helpers */,
 				B839943D2AF6C83200979305 /* FeedCache */,
 				B89CBA9A2AF55BBF003FA898 /* EssentialFeedMacosTests.swift */,
 			);
