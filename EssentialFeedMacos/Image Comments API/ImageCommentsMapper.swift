@@ -30,7 +30,7 @@ public final class ImageCommentsMapper {
         case invalidData
     }
     
-    private  static var OK_200: Int {return 200}
+    private static var OK_200: Int {return 200}
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [ImageComment] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
