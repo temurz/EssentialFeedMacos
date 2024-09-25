@@ -9,7 +9,7 @@ import EssentialFeediOS
 import EssentialFeedMacos
 import XCTest
 extension FeedUIIntegrationTests {
-    func assertThat(_ sut: FeedViewController, isRendering feed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+    func assertThat(_ sut: ListViewController, isRendering feed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
         sut.tableView.layoutIfNeeded()
         RunLoop.main.run(until: Date())
         guard sut.numberOfRenderedFeedImageViews() == feed.count else {
@@ -22,7 +22,7 @@ extension FeedUIIntegrationTests {
         executeRunLoopToCleanUpReferences()
     }
     
-    func assertThat(_ sut: FeedViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
+    func assertThat(_ sut: ListViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
         let view = sut.feedImageView(at: index)
         
         guard let cell = view as? FeedImageCell else {
