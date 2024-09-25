@@ -33,8 +33,8 @@ public final class FeedUIComposer {
         
         
         presentationAdapter.presenter = LoadResourcePresenter(
-            errorView: WeakRefVirtualProxy(object: feedController),
-            loadingView: WeakRefVirtualProxy(object: feedController),
+            errorView: WeakRefVirtualProxy(feedController),
+            loadingView: WeakRefVirtualProxy(feedController),
             resourceView: FeedViewAdapter(controller: feedController,
                                           imageLoader: { imageLoader($0).dispatchOnMainQueue() }), mapper: FeedPresenter.map(_:))
         return feedController

@@ -10,10 +10,6 @@ public struct FeedViewModel {
     public let feed: [FeedImage]
 }
 
-public protocol FeedView {
-    func display(_ viewModel: FeedViewModel)
-}
-
 public final class FeedPresenter {
     public static var title: String {
         return NSLocalizedString("FEED_VIEW_TITLE", tableName: "Feed", bundle: Bundle(for: FeedPresenter.self), comment: "Title for the feed view")
