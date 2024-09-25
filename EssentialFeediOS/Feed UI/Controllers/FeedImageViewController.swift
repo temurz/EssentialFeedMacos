@@ -11,14 +11,14 @@ public protocol FeedImageCellControllerDelegate {
     func didRequestImage()
     func didCancelImageRequest()
 }
-public final class FeedImageCellController: FeedImageView, ResourceView, ResourceLoadingView, ResourceErrorView {
+public final class FeedImageCellController: ResourceView, ResourceLoadingView, ResourceErrorView {
     
     public typealias ResourceViewModel = UIImage
-    public let viewModel: FeedImageViewModel<UIImage>
+    public let viewModel: FeedImageViewModel
     public var delegate: FeedImageCellControllerDelegate
     private var cell: FeedImageCell?
     
-    public init(viewModel: FeedImageViewModel<UIImage>, delegate: FeedImageCellControllerDelegate) {
+    public init(viewModel: FeedImageViewModel, delegate: FeedImageCellControllerDelegate) {
         self.delegate = delegate
         self.viewModel = viewModel
     }
@@ -31,9 +31,9 @@ public final class FeedImageCellController: FeedImageView, ResourceView, Resourc
         
         cell?.onRetry = delegate.didRequestImage
 
-//        cell?.onReuse = { [weak self] in
-//            self?.releaseCellForReuse()
-//        }
+        cell?.onReuse = { [weak self] in
+            self?.releaseCellForReuse()
+        }
         delegate.didRequestImage()
         return cell!
     }
@@ -47,10 +47,6 @@ public final class FeedImageCellController: FeedImageView, ResourceView, Resourc
         delegate.didCancelImageRequest()
     }
     
-    public func display(_ viewModel: FeedImageViewModel<UIImage>) {
-        cell?.onRetry = delegate.didRequestImage
-    }
-    
     public func display(_ viewModel: UIImage) {
         cell?.feedImageView.setAnimatedImage(viewModel)
     }
@@ -60,7 +56,7 @@ public final class FeedImageCellController: FeedImageView, ResourceView, Resourc
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {
-        cell?.feedImageRetryButton.isHidden = viewModel.message != nil
+        cell?.feedImageRetryButton.isHidden = viewModel.message == nil
     }
     
     private func releaseCellForReuse() {
