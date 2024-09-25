@@ -11,6 +11,14 @@ extension ListViewController {
     func simulateUserInitiatedFeedReload() {
         refreshControl?.simulatePullToRefresh()
     }
+    
+    func simulateErrorViewTap() {
+        errorView.simulateTap()
+    }
+    
+    var errorMessage: String? {
+        return errorView.message
+    }
     var isShowingLoadingIndicator: Bool {
         return refreshControl?.isRefreshing == true
     }

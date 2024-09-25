@@ -15,37 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="NyN-B1-oRe" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlU-Sl-dAz">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="34"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" title="Button">
-                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </buttonConfiguration>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemRedColor"/>
-                            <constraints>
-                                <constraint firstItem="dlU-Sl-dAz" firstAttribute="top" secondItem="NyN-B1-oRe" secondAttribute="top" id="8hc-oU-0Gg"/>
-                                <constraint firstItem="dlU-Sl-dAz" firstAttribute="leading" secondItem="NyN-B1-oRe" secondAttribute="leading" id="BXL-oN-rE9"/>
-                                <constraint firstAttribute="trailing" secondItem="dlU-Sl-dAz" secondAttribute="trailing" id="FCa-Wi-q2s"/>
-                                <constraint firstAttribute="bottom" secondItem="dlU-Sl-dAz" secondAttribute="bottom" id="zZI-F3-fpu"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="button" destination="dlU-Sl-dAz" id="rzF-cC-P7M"/>
-                            </connections>
-                        </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="gzZ-JR-8dy">
-                            <rect key="frame" x="0.0" y="205" width="393" height="16"/>
+                            <rect key="frame" x="0.0" y="171" width="393" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCommentCell" rowHeight="93" id="DKe-WE-rK4" customClass="ImageCommentCell" customModule="EssentialFeediOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="84" width="393" height="93"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DKe-WE-rK4" id="sQj-nx-bhx">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="93"/>
@@ -113,9 +90,6 @@
                             <action selector="refresh" destination="YF1-Cq-pSO" eventType="valueChanged" id="I0y-QN-9Rf"/>
                         </connections>
                     </refreshControl>
-                    <connections>
-                        <outlet property="errorView" destination="NyN-B1-oRe" id="71d-C7-Sq7"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mBS-TY-Zpm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -128,9 +102,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
