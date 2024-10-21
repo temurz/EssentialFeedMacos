@@ -80,7 +80,7 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
 extension FeedImageCellController: ResourceView, ResourceLoadingView, ResourceErrorView {
     
     public func display(_ viewModel: UIImage) {
-        cell?.feedImageView.setAnimatedImage(viewModel)
+        cell?.feedImageView.setImageAnimated(viewModel)
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {

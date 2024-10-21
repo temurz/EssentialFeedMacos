@@ -34,16 +34,16 @@ final class ImageCommentsSnapshotTests: XCTestCase {
         return commentControllers().map { CellController(id: UUID(), $0) } 
     }
     
-    private func commentControllers() -> [ImageCommentsCellController] {
+    private func commentControllers() -> [ImageCommentCellController] {
         return [
-            ImageCommentsCellController(
+            ImageCommentCellController(
                 model: ImageCommentViewModel(
                     message: "The East Side Gallery is an open-air gallery in Berlin. It consists of series of murals painted directly on a 1,316 m long remnant of the Berlin Wall, located near the centre of Berlin, on Mühlenstraße in Friedrichshain-Kreuzberg. The gallery has official status as a Denkmal, or heritage-protected landmark.",
                     date: "1000 years ago",
                     username: "John SeedJohn SeedJohn SeedJohn Seed"
                 )
             ),
-            ImageCommentsCellController(
+            ImageCommentCellController(
                 model: ImageCommentViewModel(
                     message: "The East Side Gallery is an open-air gallery in Berlin.",
                     date: "10 days ago",

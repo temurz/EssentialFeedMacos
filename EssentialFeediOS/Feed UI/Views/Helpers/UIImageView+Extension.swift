@@ -1,13 +1,13 @@
 //
-//  UIImageView+Animations.swift
+//  UIImageView+Extension.swift
 //  EssentialFeediOS
 //
-//  Created by Temur on 08/02/2024.
+//  Created by Temur on 21/10/2024.
 //
 
 import UIKit
 extension UIImageView {
-    func setAnimatedImage(_ newImage: UIImage?) {
+    func setImageAnimated(_ newImage: UIImage?) {
         image = newImage
         
         guard newImage != nil else { return }
@@ -18,4 +18,3 @@ extension UIImageView {
         }
     }
 }
-

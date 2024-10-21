@@ -2,10 +2,11 @@
 //  ImageCommentsMapper.swift
 //  EssentialFeedMacos
 //
-//  Created by Temur on 20/08/2024.
+//  Created by Temur on 21/10/2024.
 //
 
 import Foundation
+
 public final class ImageCommentsMapper {
     private struct Root: Decodable {
         private let items: [Item]
@@ -30,17 +31,18 @@ public final class ImageCommentsMapper {
         case invalidData
     }
     
-    private static var OK_200: Int {return 200}
     public static func map(_ data: Data, from response: HTTPURLResponse) throws -> [ImageComment] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
+        
         guard isOK(response), let root = try? decoder.decode(Root.self, from: data) else {
             throw Error.invalidData
         }
+        
         return root.comments
     }
     
     private static func isOK(_ response: HTTPURLResponse) -> Bool {
-        (200 ... 299).contains(response.statusCode)
+        (200...299).contains(response.statusCode)
     }
 }
