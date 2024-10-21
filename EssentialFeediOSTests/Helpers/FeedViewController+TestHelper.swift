@@ -41,7 +41,9 @@ extension ListViewController {
         }
         refreshControl = fake
     }
-    
+}
+ 
+extension ListViewController {
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
         return feedImageView(at: index) as? FeedImageCell
@@ -103,4 +105,36 @@ extension ListViewController {
         return view
     }
     
+}
+
+extension ListViewController {
+    func numberOfRenderedCommentsImageViews() -> Int {
+        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: commentsSection)
+    }
+    
+    private var commentsSection: Int {
+        return 0
+    }
+    
+    func commentsMessage(at row: Int) -> String? {
+        commentImageView(at: row)?.messageLabel.text
+    }
+    
+    func commentsDate(at row: Int) -> String? {
+        commentImageView(at: row)?.dateLabel.text
+    }
+    
+    func commentsUsername(at row: Int) -> String? {
+        commentImageView(at: row)?.usernameLabel.text
+    }
+    
+    private func commentImageView(at row: Int) -> ImageCommentCell? {
+        guard
+            numberOfRenderedCommentsImageViews() > row else {
+            return nil
+        }
+        let ds = tableView.dataSource
+        let index = IndexPath(row: row, section: commentsSection)
+        return ds?.tableView(tableView, cellForRowAt: index) as? ImageCommentCell
+    }
 }
