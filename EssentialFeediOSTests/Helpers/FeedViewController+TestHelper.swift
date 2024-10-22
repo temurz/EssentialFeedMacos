@@ -8,12 +8,6 @@
 import UIKit
 import EssentialFeediOS
 extension ListViewController {
-    override public func loadViewIfNeeded() {
-        super.loadViewIfNeeded()
-        
-        tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
-    }
-    
     
     func simulateUserInitiatedReload() {
         refreshControl?.simulatePullToRefresh()
@@ -121,7 +115,7 @@ extension ListViewController {
 }
 
 extension ListViewController {
-    func numberOfRenderedCommentsImageViews() -> Int {
+    func numberOfRenderedComments() -> Int {
         tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: commentsSection)
     }
     
@@ -143,7 +137,7 @@ extension ListViewController {
     
     private func commentImageView(at row: Int) -> ImageCommentCell? {
         guard
-            numberOfRenderedCommentsImageViews() > row else {
+            numberOfRenderedComments() > row else {
             return nil
         }
         let ds = tableView.dataSource
