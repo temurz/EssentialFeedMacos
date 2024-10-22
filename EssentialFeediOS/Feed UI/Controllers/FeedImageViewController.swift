@@ -17,11 +17,13 @@ public final class FeedImageCellController: NSObject {
     public typealias ResourceViewModel = UIImage
     public let viewModel: FeedImageViewModel
     public var delegate: FeedImageCellControllerDelegate
+    private let selection: () -> Void
     private var cell: FeedImageCell?
     
-    public init(viewModel: FeedImageViewModel, delegate: FeedImageCellControllerDelegate) {
+    public init(viewModel: FeedImageViewModel, delegate: FeedImageCellControllerDelegate, selection: @escaping () -> Void) {
         self.delegate = delegate
         self.viewModel = viewModel
+        self.selection = selection
     }
     
 }
@@ -47,6 +49,10 @@ extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, U
         }
         delegate.didRequestImage()
         return cell!
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection()
     }
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
